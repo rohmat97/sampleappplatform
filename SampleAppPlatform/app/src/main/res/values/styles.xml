@@ -1,0 +1,112 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/btnCreateColor</item>
+        <item name="android:statusBarColor">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+    </style>
+
+    <style name="AppTheme.TextInput" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:background">@drawable/bg_text_input_default</item>
+        <item name="android:padding">@dimen/_10sdp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:cursorVisible">true</item>
+    </style>
+
+    <style name="AppTheme.TextInputNoBg" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:padding">@dimen/_10sdp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:cursorVisible">true</item>
+    </style>
+
+    <style name="TextAppearance.Shrine.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@color/color_grey_text</item>
+        <item name="android:textSize">@dimen/text_12sp</item>
+    </style>
+
+    <style name="InputLayout.Shrine" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextAppearance">@style/TextAppearance.Shrine.TextInputLayout.HintText</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="InputLayout.Shrine.Dark">
+        <item name="boxStrokeColor">@color/color_grey_text</item>
+    </style>
+
+    <style name="error_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/error_appearence_color</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AppTheme.RedAccent">
+        <item name="colorAccent">@color/colorPrimary</item> <!-- Whatever color you want-->
+    </style>
+
+    <style name="Line">
+        <item name="android:background">@color/line_gray_color</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+
+    <style name="Line.Vertical">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!-- Text Style -->
+    <style name="RegularText">
+        <item name="android:textColor">@color/black_primary_color</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:fontFamily">@font/galano_grotesque</item>
+    </style>
+
+    <style name="RegularGreyText">
+        <item name="android:textColor">@color/desc_black_color</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:fontFamily">@font/galano_grotesque</item>
+    </style>
+
+    <style name="RegularBoldText">
+        <item name="android:textColor">@color/black_primary_color</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/galano_grotesque_bold</item>
+    </style>
+
+    <style name="SemiBoldText">
+        <item name="android:textColor">@color/black_primary_color</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/galano_grotesque_semi_bold</item>
+    </style>
+
+    <style name="MediumText">
+        <item name="android:textColor">@color/black_primary_color</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/galano_grotesque_medium</item>
+    </style>
+
+    <style name="TitleBoldText">
+        <item name="android:textColor">@color/black_primary_color</item>
+        <item name="android:textSize">@dimen/text_big</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/galano_grotesque_bold</item>
+    </style>
+
+    <style name="ButtonRedPurpleGradient">
+        <item name="android:background">@drawable/btn_red_purple_gradient_custom</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:fontFamily">@font/galano_grotesque_bold</item>
+    </style>
+
+</resources>

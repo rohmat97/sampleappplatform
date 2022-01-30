@@ -1,44 +1,149 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "30.0.3"
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tools_version
 
     defaultConfig {
         applicationId "com.example.sampleappplatform"
-        minSdkVersion 23
-        targetSdkVersion 31
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName version_name
+        multiDexEnabled = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    flavorDimensions "API_ENV"
+    productFlavors {
+        dev {
+            dimension "API_ENV"
+            versionNameSuffix "-dev"
+            buildConfigField "String", "BUILD_VARIANT", '"dev"'
+
+            buildConfigField("String", "APP_NAME", '"sample-platform-dev"')
+            buildConfigField("String", "API_BASE_URL", '"https://api-platform-dev.umeetme.id/"')
+            buildConfigField("String", "API_BASE_URL_CONF", '"https://api-platform-dev.umeetme.id"')
+            buildConfigField("String", "CONTENT_TYPE", '"application/json"')
+            buildConfigField("String", "AUTHORIZATION_MEET", '"Basic dGVsa29tOmRhMWMyNWQ4LTM3YzgtNDFiMS1hZmUyLTQyZGQ0ODI1YmZlYQ=="')
+            buildConfigField("String", "AUTHORIZATION", '"Basic dXNlcjp1c2VyMTIzNDU="')
+
+            applicationId "com.example.sampleappplatform.dev"
+            resValue "string", "app_name", "Sample-Platform-Dev"
+            resValue "string", "package_name", "com.example.sampleappplatform.dev"
+            resValue "string", "mirror_domain_umeetme_id", "platform-dev.umeetme.id"
+        }
+        staging {
+            dimension "API_ENV"
+            versionNameSuffix "-staging"
+            buildConfigField "String", "BUILD_VARIANT", '"staging"'
+
+            buildConfigField("String", "APP_NAME", '"sample-platform-staging"')
+            buildConfigField("String", "API_BASE_URL", '"https://api-platform-stage.umeetme.id/"')
+            buildConfigField("String", "API_BASE_URL_CONF", '"https://api-platform-stage.umeetme.id"')
+            buildConfigField("String", "CONTENT_TYPE", '"application/json"')
+            buildConfigField("String", "AUTHORIZATION_MEET", '"Basic dGVsa29tOmRhMWMyNWQ4LTM3YzgtNDFiMS1hZmUyLTQyZGQ0ODI1YmZlYQ=="')
+            buildConfigField("String", "AUTHORIZATION", '"Basic dXNlcjp1c2VyMTIzNDU="')
+
+            applicationId "com.example.sampleappplatform.staging"
+            resValue "string", "app_name", "Sample-Platform-Staging"
+            resValue "string", "package_name", "com.example.sampleappplatform.staging"
+            resValue "string", "mirror_domain_umeetme_id", "platform-stage.umeetme.id"
+        }
+        production {
+            dimension "API_ENV"
+            buildConfigField "String", "BUILD_VARIANT", '"prod"'
+
+            buildConfigField("String", "APP_NAME", '"sample-platform"')
+            buildConfigField("String", "API_BASE_URL", '"https://api-platform.umeetme.id/"')
+            buildConfigField("String", "API_BASE_URL_CONF", '"https://api-platform.umeetme.id"')
+            buildConfigField("String", "CONTENT_TYPE", '"application/json"')
+            buildConfigField("String", "AUTHORIZATION_MEET", '"Basic dGVsa29tOmRhMWMyNWQ4LTM3YzgtNDFiMS1hZmUyLTQyZGQ0ODI1YmZlYQ=="')
+            buildConfigField("String", "AUTHORIZATION", '"Basic dXNlcjp1c2VyMTIzNDU="')
+
+            applicationId "com.example.sampleappplatform"
+            resValue "string", "app_name", "Sample-Platform"
+            resValue "string", "package_name", "com.example.sampleappplatform"
+            resValue "string", "mirror_domain_umeetme_id", "platform.umeetme.id"
+        }
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+
+            buildConfigField "boolean", "RELEASE", "false"
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            crunchPngs false
+
+            proguardFile '/proguard/proguard-constraint-layout.pro'
+            proguardFile '/proguard/proguard-retrofit2.pro'
+            proguardFile '/proguard/proguard-okhttp3.pro'
+            proguardFile '/proguard/proguard-eventbus.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), '/proguard/proguard-constraint-layout.pro'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "boolean", "RELEASE", "true"
         }
     }
+
+    android.variantFilter { variant ->
+        if (variant.buildType.name == 'release') {
+            variant.getFlavors().each { flavor ->
+                if (flavor.dimension == 'API_ENV' && flavor.name == 'dev') {
+                    variant.setIgnore(true)
+                }
+            }
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    lintOptions {
+        abortOnError false
+        ignoreWarnings true
+        quiet true
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding true
     }
 }
 
 dependencies {
 
-    implementation ('org.jitsi.react:jitsi-meet-sdk:3.5.1') { transitive = true }
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(project(":datamodule"))
+    implementation(project(":framework"))
 
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'androidx.appcompat:appcompat:1.3.0-alpha01'
+
+    annotationProcessor "com.github.permissions-dispatcher:permissionsdispatcher:$permission_dispatcher_version"
+    kapt "com.github.permissions-dispatcher:permissionsdispatcher-processor:$permission_dispatcher_version"
+    debugImplementation "com.ashokvarma.android:gander-imdb:$gander_version"
+    releaseImplementation "com.ashokvarma.android:gander-no-op:$gander_version"
+
     testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation ('org.jitsi.react:jitsi-meet-sdk:3.5.1') { transitive = true }
 }

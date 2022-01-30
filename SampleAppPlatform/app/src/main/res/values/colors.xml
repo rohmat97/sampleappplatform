@@ -1,10 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#CD0100</color>
+    <color name="colorPrimaryDark">#931919</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="color_grey_desc_text">#666666</color>
+    <color name="color_grey_text">#212121</color>
+    <color name="color_blue_text">#1A90F0</color>
+    <color name="color_dot_disabled">#C4C4C4</color>
+    <color name="color_dot_enabled">#1A90F0</color>
+    <color name="btnCreateNew">#1A90F0</color>
+    <color name="backgroundDialogColor">#4B4B4B</color>
+    <color name="colorShadow0">#E1F1FB</color>
+    <color name="colorShadow1">#DDEEFA</color>
+    <color name="colorShadow2">#CDE5F8</color>
+    <color name="colorShadow3">#AED9FD</color>
+    <color name="colorShadow4">#A2D2F8</color>
+
+    <color name="blackUMeetMe">#333333</color>
+    <color name="blueTextColor">#2896F0</color>
+    <color name="greenBorder">#60BE20</color>
+    <color name="greenTextColor">#78BE46</color>
+    <color name="greyBorder">#50DDDDDD</color>
+    <color name="greyTextColor">#828282</color>
+    <color name="orangeTextColor">#FF8223</color>
+    <color name="pageBackground">#FAFAFA</color>
+    <color name="primaryRed">#E3211D</color>
+    <color name="primaryRedDark">#BE1E1E</color>
+    <color name="primaryTextColor">#262626</color>
+    <color name="blackTextColor">#000000</color>
+    <color name="ratingColor">#FFAA2D</color>
+    <color name="ratingColorInactive">#DDDDDD</color>
+    <color name="secondaryTextColor">#535353</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparentLoading">#77FFFFFF</color>
+    <color name="whiteUMeetMe">#FFFFFF</color>
+    <color name="grey_disabled_color">#ADADAD</color>
+    <color name="grey_progress_color">#EBEBEB</color>
+    <color name="error_appearence_color">#B91818</color>
+
+    <color name="webimageview_default_placeholder">#AAA</color>
+    <color name="webimageview_default_error_placeholder">#AAA</color>
+
+    <!--Primary Color-->
+    <color name="blue_primary_color">#2597E0</color>
+    <color name="black_primary_color">#333333</color>
+    <color name="white_primary_color">#FFFFFF</color>
+    <color name="blue_gray_primary_color">#F5F7FA</color>
+
+    <!--Secondary Color-->
+    <color name="red_secondary">#E20A17</color>
+
+    <!--Shade Color-->
+    <color name="pressed_blue_color">#67B7EA</color>
+    <color name="pressed_red_color">#FB8D8E</color>
+    <color name="desc_black_color">#828282</color>
+    <color name="inactive_black_color">#858585</color>
+    <color name="border_gray_color">#EBEBEB</color>
+    <color name="line_gray_color">#E5E5E5</color>
+
+    <color name="separatorColor">#F2F2F2</color>
+    <color name="grey_scheduled">#828282</color>
+    <color name="red_delete">#E20A17</color>
+
+    <color name="info_background">#E9F4FE</color>
+    <color name="info_background_red">#FCDFDF</color>
+
+    <color name="btnGradientRed">#9D1010</color>
+    <color name="btnGradientPurple">#9e145f</color>
+
+    <!--Video Player-->
+    <color name="background_color">#333333</color>
+    <color name="toolbar_background_color">#80333333</color>
 </resources>

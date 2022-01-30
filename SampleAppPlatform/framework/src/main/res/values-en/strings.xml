@@ -1,0 +1,14 @@
+<resources>
+    <string name="pl_loading">Loading&#8230;</string>
+    <string name="action_retry">Retry</string>
+    <string name="me_connection_title">Tidak ada koneksi internet</string>
+    <string name="me_connection">Mohon periksa kembali koneksi internetmu untuk memuat halaman</string>
+    <string name="me_time_out_title">Koneksi terputus</string>
+    <string name="me_time_out">Mohon periksa kembali koneksi internetmu untuk memuat halaman</string>
+    <string name="me_unknown_title">Terjadi kesalahan</string>
+    <string name="me_unknown">Silakan hubungi customer service</string>
+    <string name="me_server_down_title">Mohon maaf</string>
+    <string name="me_server_down">Saat ini sedang dilakukan maintenance system untuk meningkatkan kualitas layanan. Mohon dicoba kembali beberapa saat lagi.</string>
+    <string name="me_server_title">Terjadi kesalahan pada server</string>
+    <string name="me_server">Maaf, server kami sedang mengalami gangguan, silakan akses halaman ini beberapa saat lagi.</string>
+</resources>
