@@ -93,7 +93,6 @@ class MeetingCallActivity: JitsiMeetActivity(), JitsiMeetViewListener {
             detailMeetingData.put("expiredDateUnixTime", coreUMeetMe.expiredDateUnixTime)
             detailMeetingData.put("role", coreUMeetMe.role)
             detailMeetingData.put("linkOrCodeRoom", coreUMeetMe.linkOrCodeRoom)
-            detailMeetingData.put("specialUser", coreUMeetMe.isSpecialUser)
             detailMeetingData.put("baseURL", BuildConfig.API_BASE_URL_CONF)
 
             val defaultOptions = JitsiMeetConferenceOptions.Builder().apply {
@@ -113,7 +112,6 @@ class MeetingCallActivity: JitsiMeetActivity(), JitsiMeetViewListener {
                 setFeatureFlag("secondID", false)
                 setFeatureFlag("hostName", "UMEETME_SIMULATOR")
                 setFeatureFlag("isJoin", false)
-                setFeatureFlag("specialUser", coreUMeetMe.isSpecialUser!!)
                 setFeatureFlag("isLogin", false)
                 setFeatureFlag("credentials", credentials.toString())
                 setFeatureFlag("detailMeetingData", detailMeetingData.toString())
