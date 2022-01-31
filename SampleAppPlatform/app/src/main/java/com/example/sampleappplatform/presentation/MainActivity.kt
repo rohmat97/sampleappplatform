@@ -57,14 +57,6 @@ class MainActivity : BaseActivity(),
 
         textInput_title.hint = getString(R.string.fn_title)
 
-        radio_group_createjoin.setOnCheckedChangeListener { group, checkedId ->
-            val checkedRadioButton = group.findViewById<View>(checkedId) as RadioButton
-            val isChecked = checkedRadioButton.isChecked
-
-            if (isChecked) {
-                checkCreateOrJoin(checkedRadioButton.text.toString())
-            }
-        }
 
         textInput_title.addTextChangedListener(textWatcher)
 
@@ -82,17 +74,6 @@ class MainActivity : BaseActivity(),
         }
     }
 
-    private fun checkCreateOrJoin(createOrJoin: String) {
-        if (createOrJoin == "Create Meeting") {
-            text_special_user.visibility = View.VISIBLE
-            radio_group_special_user.visibility = View.VISIBLE
-            textInput_title.hint = getString(R.string.fn_title)
-        } else {
-            text_special_user.visibility = View.GONE
-            radio_group_special_user.visibility = View.GONE
-            textInput_title.hint = getString(R.string.fn_meetingcode_link)
-        }
-    }
 
     private fun setTokenGenerator() {
         textInput_app_id.setText(getString(R.string.fv_app_id))
@@ -284,22 +265,16 @@ class MainActivity : BaseActivity(),
     override fun onClickSubmit(view: View) {
         saveDataIdKeyToken()
         lateinit var radioLanguage: RadioButton
-        lateinit var radioSpecialUser: RadioButton
         lateinit var radioCreateJoin: RadioButton
 
         val selectedLanguage: Int = binding.radioGroupLanguage.checkedRadioButtonId
-        val selectedSpecialUser: Int = binding.radioGroupSpecialUser.checkedRadioButtonId
         val selectedCreteJoin: Int = binding.radioGroupCreatejoin.checkedRadioButtonId
 
         radioLanguage = findViewById(selectedLanguage)
-        radioSpecialUser = findViewById(selectedSpecialUser)
         radioCreateJoin = findViewById(selectedCreteJoin)
 
         language = radioLanguage.text.toString()
-        PrefManager.SPECIAL_USER = radioSpecialUser.text.toString() == "Yes"
         createOrJoin = radioCreateJoin.text.toString()
-        coreUMeetMe.isSpecialUser = PrefManager.SPECIAL_USER
-
         if (isTitleValid) {
             if (createOrJoin == "Create Meeting") {
                 viewModel.sendCreateMeetingFromApi(
@@ -398,7 +373,6 @@ class MainActivity : BaseActivity(),
                             data.meetingData?.let { meetingData ->
                                 coreUMeetMe.role = "host"
                                 coreUMeetMe.linkOrCodeRoom = meetingData.linkOrCodeRoom
-                                coreUMeetMe.isSpecialUser = PrefManager.SPECIAL_USER
                             }
                         } else {
                             data.meetingData?.let { meetingData ->

@@ -76,7 +76,7 @@ class MeetingCallActivity: JitsiMeetActivity(), JitsiMeetViewListener {
 
             val credentials = JSONObject()
             credentials.put("base_URL", BuildConfig.API_BASE_URL_CONF)
-            credentials.put("AccessToken", if (PrefManager.TOKEN.isNotEmpty()) PrefManager.TOKEN else PrefManager.TEMPORARY_TOKEN)
+            credentials.put("AccessToken", "testtoken")
 
             val validLink = coreUMeetMe.mirrorFullUrl?.replace("https://", "")
 
