@@ -47,8 +47,8 @@ allprojects {
         mavenCentral()
         maven { url 'https://jitpack.io' }
         maven {
-            url "https://github.com/umeetmeplatform/mobilesdk/raw/main/release"
-            credentials { username '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' }
+            url "/Users/rohmatdasuki/Documents/mobilesdk/release"
+//            credentials { username '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' }
 //            credentials  {
 //                username = "umeetmeplatform"
 //                password = "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"

@@ -41,5 +41,10 @@
       <option name="name" value="maven2" />
       <option name="url" value="https://github.com/umeetmeplatform/mobilesdk/raw/main/release" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven2" />
+      <option name="name" value="maven2" />
+      <option name="url" value="file:$PROJECT_DIR$/../../mobilesdk/release/" />
+    </remote-repository>
   </component>
 </project>
